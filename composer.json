@@ -1,0 +1,15 @@
+{
+    "name": "gwa/wpsh",
+    "description": "Wordpress commandline tool",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "Gwa\\Wpsh\\": "src/"
+        }
+    },
+    "require": {
+        "symfony/console": "^3.1",
+        "symfony/filesystem": "^3.1",
+        "symfony/process": "^3.1"
+    }
+}
