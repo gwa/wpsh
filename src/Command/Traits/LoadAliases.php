@@ -7,6 +7,11 @@ use Gwa\Wpsh\Path\Home;
 trait LoadAliases
 {
   /**
+   * @var string
+   */
+  private $homepath;
+
+  /**
    * @var Loader
    */
   private $loader;
@@ -18,7 +23,7 @@ trait LoadAliases
   {
     if (!isset($this->loader)) {
       $this->loader = new Loader;
-      $path = (new Home())->get() . '/.wpsh';
+      $path = $this->getHomePath() . '/.wpsh';
 
       try {
         $this->getAliasLoader()->load($path);
@@ -38,5 +43,31 @@ trait LoadAliases
   private function getAlias($name)
   {
     return $this->getLoader()->getAlias($name);
+  }
+
+  /**
+   * @return string
+   */
+  private function getHomePath()
+  {
+    if (!isset($this->homepath)) {
+      $this->homepath = (new Home())->get();
+    }
+
+    return $this->homepath;
+  }
+
+  /**
+   * @return string
+   */
+  private function getTempDirPath()
+  {
+    $path = $this->getHomePath() . '/.wpsh/temp';
+
+    if (!file_exists($path)) {
+      mkdir($path);
+    }
+
+    return $path;
   }
 }

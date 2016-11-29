@@ -13,6 +13,16 @@ abstract class AbstractCommand
   private $alias;
 
   /**
+   * @var string $inputfile
+   */
+  private $inputfile;
+
+  /**
+   * @var string $outputfile
+   */
+  private $outputfile;
+
+  /**
    * @param Alias $alias
    */
   public function __construct(Alias $alias)
@@ -30,6 +40,9 @@ abstract class AbstractCommand
     if ($this->getAlias()->isRemote() && $this->doSshWrap()) {
       $command = $this->wrapAsSsh($command);
     }
+
+    $command = $this->appendInputFile($command);
+    $command = $this->appendOutputFile($command);
 
     $process = new Process($command);
     $process->run();
@@ -61,6 +74,68 @@ abstract class AbstractCommand
       $identity,
       $command
     );
+  }
+
+  /**
+   * @param string $command
+   * @return string
+   */
+  private function appendOutputFile($command)
+  {
+    if (!$this->outputfile) {
+      return $command;
+    }
+
+    return sprintf('%s > %s', $command, $this->outputfile);
+  }
+
+  /**
+   * @param string $filepath
+   * @return self
+   */
+  public function setOutputFile($filepath)
+  {
+    $this->outputfile = $filepath;
+    return $this;
+  }
+
+  /**
+   * @return string
+   */
+  public function getOutputFile()
+  {
+    return $this->outputfile;
+  }
+
+  /**
+   * @param string $command
+   * @return string
+   */
+  private function appendInputFile($command)
+  {
+    if (!$this->inputfile) {
+      return $command;
+    }
+
+    return sprintf('%s < %s', $command, $this->inputfile);
+  }
+
+  /**
+   * @param string $filepath
+   * @return self
+   */
+  public function setInputFile($filepath)
+  {
+    $this->inputfile = $filepath;
+    return $this;
+  }
+
+  /**
+   * @return string
+   */
+  public function getInputFile()
+  {
+    return $this->inputfile;
   }
 
   /**
