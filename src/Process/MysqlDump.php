@@ -1,7 +1,7 @@
 <?php
 namespace Gwa\Wpsh\Process;
 
-class MysqlDump extends AbstractCommand
+class MysqlDump extends AbstractAliasCommand implements CommandContract
 {
   /**
    * {@inheritdoc}

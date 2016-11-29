@@ -1,7 +1,7 @@
 <?php
 namespace Gwa\Wpsh\Process;
 
-class MysqlQuery extends AbstractCommand
+class MysqlQuery extends AbstractAliasCommand implements CommandContract
 {
   /**
    * @param string $query

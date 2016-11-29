@@ -5,7 +5,7 @@ use Gwa\Wpsh\Alias\Alias;
 use Symfony\Component\Process\Process;
 use Symfony\Component\Process\Exception\ProcessFailedException;
 
-abstract class AbstractCommand
+abstract class AbstractAliasCommand
 {
   /**
    * @var Alias $alias
@@ -23,7 +23,7 @@ abstract class AbstractCommand
   private $outputfile;
 
   /**
-   * @param Alias $alias
+   * @param Alias|NULL $alias
    */
   public function __construct(Alias $alias)
   {

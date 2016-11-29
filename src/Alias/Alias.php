@@ -59,6 +59,8 @@ class Alias
     return str_replace('~', (new Home())->get(), $this->data['remote']['identity']);
   }
 
+  // --------
+
   /**
    * @return string
    */
@@ -97,5 +99,33 @@ class Alias
   public function getDBDatabase()
   {
     return isset($this->data['db']['database']) ? $this->data['db']['database'] : '';
+  }
+
+  // --------
+
+  /**
+   * @return string
+   */
+  public function getPathBase()
+  {
+    return isset($this->data['path']['base']) ? $this->data['path']['base'] : '';
+  }
+
+  /**
+   * @return string
+   */
+  public function getPathUploads()
+  {
+    $relative = isset($this->data['path']['uploads']) ? $this->data['path']['uploads'] : 'wp-content/uploads';
+    return $this->getPathBase() . '/' . $relative;
+  }
+
+  /**
+   * @return string
+   */
+  public function getPathWp()
+  {
+    $relative = isset($this->data['path']['wp']) ? $this->data['path']['wp'] : '';
+    return rtrim($this->getPathBase() . '/' . $relative, '/');
   }
 }

@@ -1,7 +1,7 @@
 <?php
 namespace Gwa\Wpsh\Process;
 
-class MysqlImport extends AbstractCommand
+class MysqlImport extends AbstractAliasCommand implements CommandContract
 {
   /**
    * {@inheritdoc}
