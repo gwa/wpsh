@@ -3,6 +3,9 @@ namespace Gwa\Wpsh\Alias;
 
 use Gwa\Wpsh\Path\Home;
 
+/**
+ * The alias class represents a WP install, either local or remote.
+ */
 class Alias
 {
   private $name;

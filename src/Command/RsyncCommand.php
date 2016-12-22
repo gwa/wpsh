@@ -3,6 +3,7 @@ namespace Gwa\Wpsh\Command;
 
 use Gwa\Wpsh\Alias\Alias;
 use Gwa\Wpsh\Process\GenericCommand;
+use Gwa\Wpsh\Process\Runner\StreamOutputRunner;
 
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
@@ -51,6 +52,7 @@ class RsyncCommand extends Command
 
     $command = new GenericCommand;
     $command->setCommand($rsync);
+    $command->setRunner(new StreamOutputRunner);
     $command->execute();
   }
 

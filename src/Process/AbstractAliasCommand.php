@@ -2,9 +2,13 @@
 namespace Gwa\Wpsh\Process;
 
 use Gwa\Wpsh\Alias\Alias;
+use Gwa\Wpsh\Process\Runner\DefaultRunner;
 use Symfony\Component\Process\Process;
 use Symfony\Component\Process\Exception\ProcessFailedException;
 
+/**
+ * An command that acts upon an Alias.
+ */
 abstract class AbstractAliasCommand
 {
   /**
@@ -45,14 +49,17 @@ abstract class AbstractAliasCommand
     $command = $this->appendOutputFile($command);
 
     $process = new Process($command);
-    $process->run();
+    $runner = $this->getRunner();
 
-    // executes after the command finishes
-    if (!$process->isSuccessful()) {
-        throw new ProcessFailedException($process);
-    }
+    return $runner->run($process);
+  }
 
-    return $process->getOutput();
+  /**
+   * @return RunnerContract
+   */
+  protected function getRunner()
+  {
+    return new DefaultRunner;
   }
 
   /**
@@ -68,12 +75,14 @@ abstract class AbstractAliasCommand
     $identityfile = $alias->getIdentityFilePath();
     $identity = $identityfile ? ' -i ' . $identityfile : '';
 
-    return sprintf(
+    $cmd = sprintf(
       'ssh %s%s \'%s\'',
       $address,
       $identity,
       $command
     );
+
+    return $cmd;
   }
 
   /**
