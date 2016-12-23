@@ -62,44 +62,20 @@ class Alias
     return str_replace('~', (new Home())->get(), $this->data['remote']['identity']);
   }
 
+  /**
+   * @return string|NULL
+   */
+  public function getCnfFilePath()
+  {
+    return isset($this->data['path']['cnf']) ? $this->data['path']['cnf'] : NULL;
+  }
+
   // --------
 
   /**
    * @return string
    */
-  public function getDBHost()
-  {
-    return isset($this->data['db']['host']) ? $this->data['db']['host'] : '127.0.0.1';
-  }
-
-  /**
-   * @return string
-   */
-  public function getDBUser()
-  {
-    return isset($this->data['db']['user']) ? $this->data['db']['user'] : 'root';
-  }
-
-  /**
-   * @return string
-   */
-  public function getDBPassword()
-  {
-    return isset($this->data['db']['password']) ? $this->data['db']['password'] : '';
-  }
-
-  /**
-   * @return string
-   */
-  public function getDBPort()
-  {
-    return isset($this->data['db']['port']) ? $this->data['db']['port'] : '3306';
-  }
-
-  /**
-   * @return string
-   */
-  public function getDBDatabase()
+  public function getDatabase()
   {
     return isset($this->data['db']['database']) ? $this->data['db']['database'] : '';
   }

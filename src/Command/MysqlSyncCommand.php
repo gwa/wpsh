@@ -56,5 +56,7 @@ class MysqlSyncCommand extends Command
 
     // Clean up temp file
     unlink($filepath);
+
+    // TODO Run post sync mysql file
   }
 }

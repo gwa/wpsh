@@ -12,14 +12,12 @@ class MysqlDump extends AbstractAliasCommand implements CommandContract
   public function build()
   {
     $alias = $this->getAlias();
+    $extrafile = $alias->getCnfFilePath() ? sprintf('--defaults-extra-file=%s ', $alias->getCnfFilePath()) : '';
 
     $cmd = sprintf(
-      'mysqldump -h %s -P %s -u %s --password="\"%s\"" %s',
-      $alias->getDBHost(),
-      $alias->getDBPort(),
-      $alias->getDBUser(),
-      $alias->getDBPassword(),
-      $alias->getDBDatabase()
+      'mysqldump %s%s',
+      $extrafile,
+      $alias->getDatabase()
     );
 
     return $cmd;

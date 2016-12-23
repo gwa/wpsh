@@ -14,14 +14,12 @@ class MysqlQuery extends AbstractAliasCommand implements CommandContract
   public function build()
   {
     $alias = $this->getAlias();
+    $extrafile = $alias->getCnfFilePath() ? sprintf('--defaults-extra-file=%s ', $alias->getCnfFilePath()) : '';
 
     return sprintf(
-      'mysql -h %s -P %s -u %s --password=%s %s -e "%s"',
-      $alias->getDBHost(),
-      $alias->getDBPort(),
-      $alias->getDBUser(),
-      $alias->getDBPassword(),
-      $alias->getDBDatabase(),
+      'mysql %s--database=%s "%s"',
+      $extrafile,
+      $alias->getDatabase(),
       $this->getQuery()
     );
   }
