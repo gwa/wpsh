@@ -13,7 +13,7 @@ Set up site aliases in `~/.wpsh/`.
 return [
   // The production server
   //
-  '@mysite.prod.de' => [
+  '@mysite.prod' => [
     // SSH configuration
     'remote' => [
       'host'     => '123.255.12.123',
@@ -25,9 +25,9 @@ return [
     // Absolute paths
     'path' => [
       // The base directory
-      'base'    => '/var/www/test-oped',
+      'base'    => '/var/www/mysite',
       // Path to a custom MySQL cnf file
-      'cnf'     => '~/mysql_cnf/oped_de.cnf',
+      'cnf'     => '~/mysql_cnf/mysite.cnf',
       // Path to a custom wp dir, relative to base
       // 'wp' => '',
       // Path to a custom uploads dir, relative to base
@@ -44,7 +44,7 @@ return [
   // The local development copy
   // Settings as above, but without `remote`
   //
-  '@mysite.local.de' => [
+  '@mysite.local' => [
     'path' => [
       'base'    => '/path/local/server/wordpress',
     ],
