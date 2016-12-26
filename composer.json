@@ -1,7 +1,8 @@
 {
     "name": "gwa/wpsh",
-    "description": "Wordpress commandline tool",
+    "description": "Wordpress sync commandline tool",
     "type": "project",
+    "bin": ["wpsh"],
     "autoload": {
         "psr-4": {
             "Gwa\\Wpsh\\": "src/"

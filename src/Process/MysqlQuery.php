@@ -1,6 +1,9 @@
 <?php
 namespace Gwa\Wpsh\Process;
 
+/**
+ * Runs an arbitrary MySQL query.
+ */
 class MysqlQuery extends AbstractAliasCommand implements CommandContract
 {
   /**
@@ -17,7 +20,7 @@ class MysqlQuery extends AbstractAliasCommand implements CommandContract
     $extrafile = $alias->getCnfFilePath() ? sprintf('--defaults-extra-file=%s ', $alias->getCnfFilePath()) : '';
 
     return sprintf(
-      'mysql %s--database=%s "%s"',
+      'mysql %s--database=%s -e \'%s\'',
       $extrafile,
       $alias->getDatabase(),
       $this->getQuery()

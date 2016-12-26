@@ -8,6 +8,7 @@ use Gwa\Wpsh\Command\RsyncCommand;
 use Gwa\Wpsh\Command\ShowAliasesCommand;
 use Symfony\Component\Console\Application;
 
+// Create application
 $application = new Application;
 
 // Register commands

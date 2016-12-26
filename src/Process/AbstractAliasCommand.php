@@ -4,7 +4,6 @@ namespace Gwa\Wpsh\Process;
 use Gwa\Wpsh\Alias\Alias;
 use Gwa\Wpsh\Process\Runner\DefaultRunner;
 use Symfony\Component\Process\Process;
-use Symfony\Component\Process\Exception\ProcessFailedException;
 
 /**
  * An command that acts upon an Alias.

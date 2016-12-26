@@ -2,6 +2,22 @@
 
 A command line tool for local WordPress development.
 
+## Introduction
+
+`wpsh` is a command line tool we use to sync the database and uploaded files from a remote (PRODUCTION) WordPress install to a local (DEVELOPMENT) install.
+
+It was inspired by Drupal's `drush` tool.
+
+## Prerequisites
+
+You will need:
+
+* `composer` installed locally.
+* `rsync` installed locally.
+* SSH access to the remote server.
+
+## Installation
+
 ## Setup
 
 ### Aliases
@@ -38,6 +54,13 @@ return [
     'db' => [
       // Name of the database
       'database' => 'dbname'
+    ],
+
+    // Other settings
+    'settings' => [
+      'siteurl' => 'http://www.example.com',
+      // Set a custom `home` path. Defaults to siteurl.
+      // 'home' => 'http://www.example.com/wp',
     ]
   ],
 
@@ -52,6 +75,10 @@ return [
     'db' => [
       'database' => 'dbname',
     ],
+
+    'settings' => [
+      'siteurl' => 'http://mysite.local',
+    ]
   ],
 ];
 ```
@@ -59,6 +86,8 @@ return [
 ### MySQL cnf files
 
 We use `cnf` files [to store MySQL credentials](http://dev.mysql.com/doc/refman/5.7/en/option-files.html).
+
+You can save these in one of the default paths (see MySQL docs), or in a custom path that is defined in the site alias' `cnf` path.
 
 Example:
 
@@ -71,6 +100,8 @@ port=3306
 ```
 
 ## Usage
+
+The following commands are available.
 
 ### `sa`
 
@@ -92,6 +123,8 @@ php -f wpsh.php mysqldump [@alias] > /path/to/outfile.sql
 
 Syncs DB from @alias1 to @alias2.
 
+Updates settings and URLs in posts with the local settings and URLs.
+
 ```
 php -f wpsh.php mysqlsync [@alias1] [@alias2]
 ```
@@ -103,3 +136,7 @@ Syncs uploads from @alias1 to @alias2.
 ```
 php -f wpsh.php rsync [@alias1] [@alias2]
 ```
+
+## TODOs
+
+[] Provide hook mechanism for custom scripts / MySQL queries to be executed after sync.

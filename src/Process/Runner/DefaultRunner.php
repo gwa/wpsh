@@ -1,6 +1,7 @@
 <?php
 namespace Gwa\Wpsh\Process\Runner;
 
+use Symfony\Component\Process\Exception\ProcessFailedException;
 use Symfony\Component\Process\Process;
 
 class DefaultRunner implements RunnerContract

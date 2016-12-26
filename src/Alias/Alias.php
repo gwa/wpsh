@@ -107,4 +107,22 @@ class Alias
     $relative = isset($this->data['path']['wp']) ? $this->data['path']['wp'] : '';
     return rtrim($this->getPathBase() . '/' . $relative, '/');
   }
+
+  // --------
+
+  /**
+   * @return string|NULL
+   */
+  public function getSiteURL()
+  {
+    return isset($this->data['settings']['siteurl']) ? $this->data['settings']['siteurl'] : NULL;    
+  }
+
+  /**
+   * @return string|NULL
+   */
+  public function getHome()
+  {
+    return isset($this->data['settings']['home']) ? $this->data['settings']['home'] : $this->getSiteURL();    
+  }
 }
