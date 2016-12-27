@@ -24,8 +24,13 @@ You will need:
 
 Set up site aliases in `~/.wpsh/`.
 
+Create a file called in `.wpsh` called `alias.[mysite].php`.
+
+`mysite` can contain alphanumeric characters, hyphens and periods.
+
 ```php
 <?php
+// File: ~/.wpsh/alias.mysite.php
 return [
   // The production server
   //
@@ -139,4 +144,4 @@ php -f wpsh.php rsync [@alias1] [@alias2]
 
 ## TODOs
 
-[] Provide hook mechanism for custom scripts / MySQL queries to be executed after sync.
+[ ] Provide hook mechanism for custom scripts / MySQL queries to be executed after sync.
