@@ -133,7 +133,7 @@ The following commands are available.
 Lists available aliases.
 
 ```
-php -f wpsh.php sa
+$ wpsh sa
 ```
 
 ### `mysqldump`
@@ -141,7 +141,7 @@ php -f wpsh.php sa
 Creates a mysql dump file.
 
 ```
-php -f wpsh.php mysqldump [@alias] > /path/to/outfile.sql
+$ wpsh mysqldump [@alias] > /path/to/outfile.sql
 ```
 
 ### `mysqlsync`
@@ -151,7 +151,7 @@ Syncs DB from @alias1 to @alias2.
 Updates settings and URLs in posts with the local settings and URLs.
 
 ```
-php -f wpsh.php mysqlsync [@alias1] [@alias2]
+$ wpsh mysqlsync [@alias1] [@alias2]
 ```
 
 ### `rsync`
@@ -159,7 +159,7 @@ php -f wpsh.php mysqlsync [@alias1] [@alias2]
 Syncs uploads from @alias1 to @alias2.
 
 ```
-php -f wpsh.php rsync [@alias1] [@alias2]
+$ wpsh rsync [@alias1] [@alias2]
 ```
 
 ## TODOs
