@@ -20,7 +20,7 @@ class ShowAliasesCommand extends Command
   protected function execute(InputInterface $input, OutputInterface $output)
   {
     foreach ($this->getAliasLoader()->getAliasNames() as $name) {
-      $output->writeln($name);
+      $output->writeln('<info>' . $name . '</info>');
     }
   }
 }

@@ -2,6 +2,7 @@
     "name": "gwa/wpsh",
     "description": "Wordpress sync commandline tool",
     "type": "project",
+    "license": "MIT",
     "bin": ["wpsh"],
     "autoload": {
         "psr-4": {

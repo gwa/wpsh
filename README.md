@@ -18,13 +18,33 @@ You will need:
 
 ## Installation
 
+Install globally using [composer](https://getcomposer.org).
+
+```bash
+$ composer global require gwa/wpsh
+```
+
+Test that `wpsh` is installed:
+
+```bash
+$ wpsh
+```
+
+You should see some usage help output.
+
 ## Setup
 
 ### Aliases
 
-Set up site aliases in `~/.wpsh/`.
+Site "aliases" contain the configuration for a site, either remote or local. `wpsh` looks for site aliases in `~/.wpsh`.
 
-Create a file called in `.wpsh` called `alias.[mysite].php`.
+First create the directory in your HOME directory.
+
+```bash
+$ mkdir ~/.wpsh
+```
+
+Create a file called in `~/.wpsh` called `alias.[mysite].php`.
 
 `mysite` can contain alphanumeric characters, hyphens and periods.
 

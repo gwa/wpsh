@@ -1,6 +1,24 @@
 #!/usr/bin/env php
 <?php
-require __DIR__.'/vendor/autoload.php';
+// Vendor autoload
+$autoloadpaths = [
+  __DIR__ . '/vendor/autoload.php',
+  __DIR__ . '/../../autoload.php',
+];
+$autoloaded = false;
+
+foreach ($autoloadpaths as $path) {
+  if (file_exists($path)) {
+    require $path;
+    $autoloaded = true;
+    break;
+  }
+}
+
+if (!$autoloaded) {
+  echo 'ERROR: Composer autoload.php could not be found.' . PHP_EOL;
+  exit(1);
+}
 
 use Gwa\Wpsh\Command\MysqlDumpCommand;
 use Gwa\Wpsh\Command\MysqlSyncCommand;
