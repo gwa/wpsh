@@ -12,8 +12,9 @@ It was inspired by Drupal's `drush` tool.
 
 You will need:
 
-* `composer` installed locally.
-* `rsync` installed locally.
+* `composer` installed locally (for installation).
+* `mysql` needs to be installed remotely.
+* `mysql` and `rsync` need to be installed locally and in your path.
 * SSH access to the remote server.
 
 ## Installation
